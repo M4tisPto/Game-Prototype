@@ -54,3 +54,11 @@ size = 2.1061244
 [node name="StateDebugLabel" type="Label" parent="." unique_id=106465608]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="state_machine" type="Node" parent="." unique_id=1062681679]
+
+[node name="idle" type="Node" parent="state_machine" unique_id=863437320]
+
+[node name="move" type="Node" parent="state_machine" unique_id=76202866]
+
+[node name="jump" type="Node" parent="state_machine" unique_id=1686055409]

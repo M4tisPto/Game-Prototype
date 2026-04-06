@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 				velocity.y = jump_force
 				jumps_left -= 1
 				
-				if jumps_left == 0:
+				if jumps_left != 0:
 					velocity.y = jump_force
 	
 	

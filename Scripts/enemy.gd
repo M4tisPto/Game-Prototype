@@ -10,7 +10,7 @@ var direction = 2
 
 
 func _process(delta: float) -> void:
-	position.x += direction * SPEED * delta
+	position.x -= direction * SPEED * delta
 
 
 func _on_hit_area_body_entered(body: Node2D) -> void:
