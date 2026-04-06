@@ -11,6 +11,7 @@ size = Vector2(2092, 471)
 [node name="Game" type="Node2D" unique_id=1288219478]
 
 [node name="Player" parent="." unique_id=2057628453 instance=ExtResource("1_qxrlw")]
+position = Vector2(12, -6281)
 scale = Vector2(0.45565394, 0.45565394)
 script = ExtResource("2_3dryh")
 walk_speed = 650.0

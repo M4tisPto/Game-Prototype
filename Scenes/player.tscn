@@ -1,10 +1,21 @@
 [gd_scene format=3 uid="uid://cv760emty7krm"]
 
 [ext_resource type="PackedScene" uid="uid://bavq107j1ul6x" path="res://Model/Protagonist/low_poly_prot.glb" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://dd8b1u57xyfad" path="res://Scripts/StateMachine.gd" id="2_cvnsp"]
-[ext_resource type="Script" uid="uid://dwxtmncs2mni4" path="res://Scripts/idle_state.gd" id="3_fkybt"]
-[ext_resource type="Script" uid="uid://b41vk2c61mmp6" path="res://Scripts/jump_state.gd" id="4_x3wgy"]
-[ext_resource type="Script" uid="uid://csmtlqajasg7p" path="res://Scripts/walk_state.gd" id="5_3smsa"]
+
+[sub_resource type="GDScript" id="GDScript_v0iea"]
+script/source = "extends Node
+var current_state
+
+func change_state(new_state):
+	if current_state:
+		current_state.exit()
+	current_state = new_state
+	current_state.enter()
+
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.update(delta)
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 size = Vector2(224, 954)
@@ -13,6 +24,7 @@ size = Vector2(224, 954)
 viewport_path = NodePath("SubViewport")
 
 [node name="Player" type="CharacterBody2D" unique_id=2057628453]
+script = SubResource("GDScript_v0iea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51482863]
 position = Vector2(0, -467)
@@ -39,16 +51,14 @@ size = 2.1061244
 
 [node name="low_poly_prot" parent="SubViewport/Node3D" unique_id=1933262374 instance=ExtResource("1_v0iea")]
 
-[node name="StateMachine" type="Node" parent="." unique_id=921202834]
-script = ExtResource("2_cvnsp")
-metadata/_custom_type_script = "uid://dd8b1u57xyfad"
+[node name="StateDebugLabel" type="Label" parent="." unique_id=106465608]
+offset_right = 40.0
+offset_bottom = 23.0
 
-[node name="IdleState" type="Node" parent="StateMachine" unique_id=798713352]
-script = ExtResource("3_fkybt")
-metadata/_custom_type_script = "uid://dwxtmncs2mni4"
+[node name="state_machine" type="Node" parent="." unique_id=1062681679]
 
-[node name="JumpState" type="Node" parent="StateMachine" unique_id=1268161059]
-script = ExtResource("4_x3wgy")
+[node name="idle" type="Node" parent="state_machine" unique_id=863437320]
 
-[node name="WalkState" type="Node" parent="StateMachine" unique_id=259523919]
-script = ExtResource("5_3smsa")
+[node name="move" type="Node" parent="state_machine" unique_id=76202866]
+
+[node name="jump" type="Node" parent="state_machine" unique_id=1686055409]
