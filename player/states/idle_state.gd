@@ -1,15 +1,18 @@
 extends State
-class_name IdleState
 
-func enter():
-	print("Idle")
+@export 
+var fall_state: State
+@export
+var jump_state: State
+@export
+var move_state: State
 
-func physics_update(delta):
-	var direction = Input.get_axis("move_left", "move_right")
 
-	if direction != 0:
-		state_machine.change_state("walkstate")
+func enter() -> void:
+	super()
+	parent.velocity.x = 0
 
-func handle_input(event):
-	if Input.is_action_just_pressed("jump"):
-		state_machine.change_state("jumpstate")
+func process_input(event: InputEvent) -> State:
+	if Input.is_action_just_pressed("jump") and parent.is_on_floor():
+		return jump_state
+	if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right")

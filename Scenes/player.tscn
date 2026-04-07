@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cv760emty7krm"]
 
 [ext_resource type="PackedScene" uid="uid://bavq107j1ul6x" path="res://Model/Protagonist/low_poly_prot.glb" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://bvaydohv3wnhe" path="res://Scripts/state_machine.gd" id="2_6t5aa"]
-[ext_resource type="Script" uid="uid://dwxtmncs2mni4" path="res://Scripts/idle_state.gd" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://bvaydohv3wnhe" path="res://player/states/state_machine.gd" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://dwxtmncs2mni4" path="res://player/states/idle_state.gd" id="3_vgqql"]
 
 [sub_resource type="GDScript" id="GDScript_v0iea"]
 script/source = "class_name Player
@@ -72,6 +72,8 @@ script = ExtResource("2_6t5aa")
 
 [node name="idle" type="Node" parent="state_machine" unique_id=863437320]
 script = ExtResource("3_vgqql")
+animation_name = null
+move_speed = null
 
 [node name="move" type="Node" parent="state_machine" unique_id=76202866]
 
