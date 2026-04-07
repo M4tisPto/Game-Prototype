@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjvq5uhk1pqbb"]
 
 [ext_resource type="PackedScene" uid="uid://cv760emty7krm" path="res://Scenes/player.tscn" id="1_qxrlw"]
-[ext_resource type="Script" uid="uid://d4i5dse0v884t" path="res://Scripts/Player.gd" id="2_3dryh"]
+[ext_resource type="Script" uid="uid://d4i5dse0v884t" path="res://player/states/Player.gd" id="2_3dryh"]
 [ext_resource type="Script" uid="uid://dk5mg8qwedv4k" path="res://Scripts/camera_2d.gd" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bc6rvnq6v51er" path="res://Scenes/enemy.tscn" id="4_3dryh"]
 
@@ -14,11 +14,6 @@ size = Vector2(2092, 471)
 position = Vector2(12, -6281)
 scale = Vector2(0.45565394, 0.45565394)
 script = ExtResource("2_3dryh")
-walk_speed = 650.0
-run_speed = 1000.0
-acceleration = 0.1
-deceleration = 0.1
-jump_force = -400.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1012375917]
 position = Vector2(2.194648, -603.5282)
