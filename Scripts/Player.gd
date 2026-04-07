@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 		was_in_air = true
 	
+	
 	if was_in_air and is_on_floor():
 		was_in_air = false
 	if Input.is_action_just_pressed("ground_slam") and not is_on_floor():
@@ -73,7 +74,7 @@ func _physics_process(delta: float) -> void:
 	
 	if direction != 0:
 		velocity.x = move_toward(velocity.x, direction * speed, speed * acceleration)
-		var target_rotation = PI/2 if direction > 0 else -PI/3
+		var target_rotation = PI/3 if direction > 0 else -PI/3
 		player.rotation.y = lerp_angle(player.rotation.y, target_rotation, rotation_speed * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, walk_speed * deceleration)
