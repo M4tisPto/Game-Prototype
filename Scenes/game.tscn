@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cjvq5uhk1pqbb"]
 
 [ext_resource type="PackedScene" uid="uid://cv760emty7krm" path="res://Scenes/player.tscn" id="1_qxrlw"]
-[ext_resource type="Script" uid="uid://d4i5dse0v884t" path="res://player/states/Player.gd" id="2_3dryh"]
 [ext_resource type="Script" uid="uid://dk5mg8qwedv4k" path="res://Scripts/camera_2d.gd" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bc6rvnq6v51er" path="res://Scenes/enemy.tscn" id="4_3dryh"]
 
@@ -11,9 +10,8 @@ size = Vector2(2092, 471)
 [node name="Game" type="Node2D" unique_id=1288219478]
 
 [node name="Player" parent="." unique_id=2057628453 instance=ExtResource("1_qxrlw")]
-position = Vector2(12, -6281)
+position = Vector2(57, -443)
 scale = Vector2(0.45565394, 0.45565394)
-script = ExtResource("2_3dryh")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1012375917]
 position = Vector2(2.194648, -603.5282)

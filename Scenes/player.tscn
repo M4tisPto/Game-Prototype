@@ -1,33 +1,7 @@
 [gd_scene format=3 uid="uid://cv760emty7krm"]
 
+[ext_resource type="Script" uid="uid://b18fomgic1ap" path="res://Scripts/Player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://bavq107j1ul6x" path="res://Model/Protagonist/low_poly_prot.glb" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://bvaydohv3wnhe" path="res://player/states/state_machine.gd" id="2_6t5aa"]
-[ext_resource type="Script" uid="uid://dwxtmncs2mni4" path="res://player/states/idle_state.gd" id="3_vgqql"]
-
-[sub_resource type="GDScript" id="GDScript_v0iea"]
-script/source = "class_name Player
-extends CharacterBody2D
-
-@onready
-var animations = $animations
-@onready
-var state_machine = $state_machine
-
-
-func _ready() -> void:
-	state_machine.init(self)
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	state_machine.process_input(event)
-
-
-func _physics_process(delta: float) -> void:
-	state_machine.process_physics(delta)
-
-func _process(delta: float) -> void:
-	state_machine.process_frame(delta)
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 size = Vector2(224, 954)
@@ -36,7 +10,7 @@ size = Vector2(224, 954)
 viewport_path = NodePath("SubViewport")
 
 [node name="Player" type="CharacterBody2D" unique_id=2057628453]
-script = SubResource("GDScript_v0iea")
+script = ExtResource("1_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51482863]
 position = Vector2(0, -467)
@@ -66,15 +40,3 @@ size = 2.1061244
 [node name="StateDebugLabel" type="Label" parent="." unique_id=106465608]
 offset_right = 40.0
 offset_bottom = 23.0
-
-[node name="state_machine" type="Node" parent="." unique_id=1062681679]
-script = ExtResource("2_6t5aa")
-
-[node name="idle" type="Node" parent="state_machine" unique_id=863437320]
-script = ExtResource("3_vgqql")
-animation_name = null
-move_speed = null
-
-[node name="move" type="Node" parent="state_machine" unique_id=76202866]
-
-[node name="jump" type="Node" parent="state_machine" unique_id=1686055409]
