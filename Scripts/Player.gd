@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var run_speed = 1000.0
 @export_range(0, 1) var acceleration = 0.1
 @export_range(0, 1) var deceleration = 0.1
-
+@export var rotation_speed = 10.0
 # Modelo 3D
 @onready var player: Node3D = $SubViewport/Node3D/low_poly_prot
 # Camera_shake
@@ -73,10 +73,8 @@ func _physics_process(delta: float) -> void:
 	
 	if direction != 0:
 		velocity.x = move_toward(velocity.x, direction * speed, speed * acceleration)
-		if direction > 0:
-			player.rotation.y = PI/3
-		else:
-			player.rotation.y = -PI/3
+		var target_rotation = PI/2 if direction > 0 else -PI/3
+		player.rotation.y = lerp_angle(player.rotation.y, target_rotation, rotation_speed * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, walk_speed * deceleration)
 

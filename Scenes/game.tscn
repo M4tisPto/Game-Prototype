@@ -12,6 +12,7 @@ size = Vector2(2092, 471)
 [node name="Player" parent="." unique_id=2057628453 instance=ExtResource("1_qxrlw")]
 position = Vector2(57, -443)
 scale = Vector2(0.45565394, 0.45565394)
+walk_speed = 650.05
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1012375917]
 position = Vector2(2.194648, -603.5282)
