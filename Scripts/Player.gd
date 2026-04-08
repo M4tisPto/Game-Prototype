@@ -76,9 +76,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, direction * speed, speed * acceleration)
 		var target_rotation = PI/3 if direction > 0 else -PI/3
 		player.rotation.y = lerp_angle(player.rotation.y, target_rotation, rotation_speed * delta)
-	else:
-		var friction = walk_speed * deceleration if is_on_floor() else walk_speed * 0.05
-		velocity.x = move_toward(velocity.x, 0, friction * delta)
+	else: 
+		velocity.x = move_toward(velocity.x, 0, speed * deceleration)
 
 
 
