@@ -15,19 +15,15 @@ func physics_update(delta):
 			target_rotation,
 			player.rotation_speed * delta
 		)
-	# Movimiento en aire
 	player.velocity.x = direction * speed
 	
-	# Doble salto
 	if Input.is_action_just_pressed("jump") and player.jumps_left > 0:
 		player.velocity.y = player.jump_force
 		player.jumps_left -= 1
 	
-	# Slam
 	if Input.is_action_just_pressed("ground_slam"):
 		state_machine.change_state($"../SlamState")
 	
-	# Aterrizaje
 	if player.is_on_floor():
 		if direction == 0:
 			state_machine.change_state($"../IdleState")

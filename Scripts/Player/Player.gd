@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 @export var jump_force = -400.0
 
+# Slam
 const GROUND_SLAM_SPEED = 1200.0
 
 var jumps_left: int = 0
@@ -16,9 +17,11 @@ const TOTAL_JUMPS: int = 2
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-# Nodos
+# Cositas chistosas
 @onready var player_model: Node3D = $SubViewport/Node3D/low_poly_prot
 @onready var camera_2d: Camera2D = $Camera2D
+
+#State Machine
 @onready var state_machine: Node = $StateMachine
 
 

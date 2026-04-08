@@ -1,3 +1,7 @@
+# esta webada hace que cuando detecta que el jugador se mueve, salte o haga slam, automaticamente cambiara a un estado diferente
+
+# costo hacer esto, entendia como funciona pero no sabia como ejecutarlo y que funcione bien hasta ahora
+
 extends Node
 
 var current_state
