@@ -15,10 +15,13 @@ func physics_update(delta):
 	if direction != 0:
 		state_machine.change_state($"../MoveRunState")
 	
-	# Salto
+	# Jump
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():
 		state_machine.change_state($"../AirState")
 	
-	# Slam en aire
-	if Input.is_action_just_pressed("ground_slam") and not player.is_on_floor():
-		state_machine.change_state($"../SlamState")
+	# FastFall
+	if Input.is_action_just_pressed("fast_fall") and not player.is_on_floor():
+		state_machine.change_state($"../FastFallState")
+	
+	if Input.is_action_pressed("attack_button"):
+		state_machine.change_state($"../AttackState")

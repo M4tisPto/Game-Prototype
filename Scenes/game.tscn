@@ -10,7 +10,7 @@ size = Vector2(2092, 471)
 [node name="Game" type="Node2D" unique_id=1288219478]
 
 [node name="Player" parent="." unique_id=2057628453 instance=ExtResource("1_qxrlw")]
-position = Vector2(57, -443)
+position = Vector2(-306, -57.000015)
 scale = Vector2(0.45565394, 0.45565394)
 walk_speed = 650.05
 

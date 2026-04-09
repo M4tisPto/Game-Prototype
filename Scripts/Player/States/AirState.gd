@@ -21,11 +21,11 @@ func physics_update(delta):
 		player.velocity.y = player.jump_force
 		player.jumps_left -= 1
 	
-	if Input.is_action_just_pressed("ground_slam"):
-		state_machine.change_state($"../SlamState")
+	if Input.is_action_just_pressed("fast_fall"):
+		state_machine.change_state($"../FastFallState")
 	
 	if player.is_on_floor():
 		if direction == 0:
 			state_machine.change_state($"../IdleState")
 		else:
-			state_machine.change_state($"../RunState")
+			state_machine.change_state($"../MoveRunState")

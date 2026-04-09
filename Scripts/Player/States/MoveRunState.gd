@@ -21,6 +21,6 @@ func physics_update(delta):
 	
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():
 		state_machine.change_state($"../AirState")
-	
-	if Input.is_action_just_pressed("ground_slam") and not player.is_on_floor():
-		state_machine.change_state($"../SlamState")
+			
+	if Input.is_action_just_pressed("fast_fall") and not player.is_on_floor():
+		state_machine.change_state($"../FastFallState")

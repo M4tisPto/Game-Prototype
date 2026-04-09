@@ -6,8 +6,9 @@
 [ext_resource type="Script" uid="uid://ddl4574sppf3j" path="res://Scripts/Player/States/MoveRunState.gd" id="4_3smsa"]
 [ext_resource type="Script" uid="uid://bj0nwsavnov82" path="res://Scripts/Player/States/JumpState.gd" id="5_8erm5"]
 [ext_resource type="Script" uid="uid://di7dlawidbsq8" path="res://Scripts/Player/States/IdleState.gd" id="6_f1ek2"]
-[ext_resource type="Script" uid="uid://cq223lv76b23c" path="res://Scripts/Player/States/SlamState.gd" id="7_8erm5"]
+[ext_resource type="Script" uid="uid://cq223lv76b23c" path="res://Scripts/Player/States/FastFallState.gd" id="7_8erm5"]
 [ext_resource type="Script" uid="uid://bahpvd6g0jbim" path="res://Scripts/Player/States/AirState.gd" id="8_f1ek2"]
+[ext_resource type="Script" uid="uid://2kplfh3hwnj8" path="res://Scripts/Player/States/AttackState.gd" id="9_f1ek2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 size = Vector2(224, 954)
@@ -45,6 +46,7 @@ size = 2.1061244
 [node name="Node3D" type="Node3D" parent="SubViewport" unique_id=475907935]
 
 [node name="low_poly_prot" parent="SubViewport/Node3D" unique_id=1933262374 instance=ExtResource("1_v0iea")]
+transform = Transform3D(0.7782431, 0, 0.62796307, 0, 1, 0, -0.62796307, 0, 0.7782431, 0, 0, 0)
 
 [node name="StateDebugLabel" type="Label" parent="." unique_id=106465608]
 offset_left = -560.0
@@ -67,8 +69,12 @@ script = ExtResource("5_8erm5")
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=906021483]
 script = ExtResource("6_f1ek2")
 
-[node name="SlamState" type="Node" parent="StateMachine" unique_id=712080591]
+[node name="FastFallState" type="Node" parent="StateMachine" unique_id=712080591]
 script = ExtResource("7_8erm5")
 
 [node name="AirState" type="Node" parent="StateMachine" unique_id=1333661431]
 script = ExtResource("8_f1ek2")
+
+[node name="AttackState" type="Node" parent="StateMachine" unique_id=1151571400]
+script = ExtResource("9_f1ek2")
+metadata/_custom_type_script = "uid://cecno1esqtfko"

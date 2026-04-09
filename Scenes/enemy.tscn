@@ -51,9 +51,5 @@ layers = 5
 light_energy = 10.0
 shadow_enabled = true
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=339487482]
-position = Vector2(0, -257)
-target_position = Vector2(585, 0)
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
