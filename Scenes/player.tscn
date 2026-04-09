@@ -78,3 +78,5 @@ script = ExtResource("8_f1ek2")
 [node name="AttackState" type="Node" parent="StateMachine" unique_id=1151571400]
 script = ExtResource("9_f1ek2")
 metadata/_custom_type_script = "uid://cecno1esqtfko"
+
+[node name="Timer" type="Timer" parent="StateMachine/AttackState" unique_id=1227143385]
