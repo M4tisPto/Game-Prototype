@@ -5,7 +5,7 @@ func get_state_name():
 
 func physics_update(delta):
 	var direction = Input.get_axis("move_left", "move_right")
-	var speed = player.run_speed if Input.is_action_pressed("sprint") else player.walk_speed
+	var speed = player.run_speed if Input.is_action_pressed("run") else player.walk_speed
 	player.velocity.x = move_toward(player.velocity.x, direction * speed, speed * player.acceleration)
 	
 	if direction != 0:
@@ -24,3 +24,5 @@ func physics_update(delta):
 			
 	if Input.is_action_just_pressed("fast_fall") and not player.is_on_floor():
 		state_machine.change_state($"../FastFallState")
+	if Input.is_action_just_pressed("attack_button"):
+		state_machine.change_state($"../AttackState")

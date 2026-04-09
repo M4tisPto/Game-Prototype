@@ -2,18 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b18fomgic1ap" path="res://Scripts/Player/Player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://bavq107j1ul6x" path="res://Model/Protagonist/low_poly_prot.glb" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://dq6gj4s4g20t1" path="res://Scripts/Player/hit_box.gd" id="2_tx1dd"]
 [ext_resource type="Script" uid="uid://cdfrpqlgutfx5" path="res://Scripts/Player/StateMachine.gd" id="3_x3wgy"]
 [ext_resource type="Script" uid="uid://ddl4574sppf3j" path="res://Scripts/Player/States/MoveRunState.gd" id="4_3smsa"]
 [ext_resource type="Script" uid="uid://bj0nwsavnov82" path="res://Scripts/Player/States/JumpState.gd" id="5_8erm5"]
 [ext_resource type="Script" uid="uid://di7dlawidbsq8" path="res://Scripts/Player/States/IdleState.gd" id="6_f1ek2"]
-[ext_resource type="Script" uid="uid://cq223lv76b23c" path="res://Scripts/Player/States/FastFallState.gd" id="7_f1ek2"]
+[ext_resource type="Script" path="res://Scripts/Player/States/SlamState.gd" id="7_8erm5"]
 [ext_resource type="Script" uid="uid://bahpvd6g0jbim" path="res://Scripts/Player/States/AirState.gd" id="8_f1ek2"]
 [ext_resource type="Script" uid="uid://2kplfh3hwnj8" path="res://Scripts/Player/States/AttackState.gd" id="9_f1ek2"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1ek2"]
-radius = 80.0
-height = 400.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 size = Vector2(224, 954)
@@ -24,20 +19,8 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="LabelSettings" id="LabelSettings_8erm5"]
 font_size = 150
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tx1dd"]
-graph_offset = Vector2(-181, -31)
-
 [node name="Player" type="CharacterBody2D" unique_id=2057628453]
 script = ExtResource("1_cvnsp")
-
-[node name="HitBox" type="Area2D" parent="." unique_id=599792304]
-light_mask = 4
-monitoring = false
-script = ExtResource("2_tx1dd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1067876754]
-position = Vector2(440, -568)
-shape = SubResource("CapsuleShape2D_f1ek2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51482863]
 position = Vector2(0, -467)
@@ -87,7 +70,7 @@ script = ExtResource("5_8erm5")
 script = ExtResource("6_f1ek2")
 
 [node name="FastFallState" type="Node" parent="StateMachine" unique_id=712080591]
-script = ExtResource("7_f1ek2")
+script = ExtResource("7_8erm5")
 
 [node name="AirState" type="Node" parent="StateMachine" unique_id=1333661431]
 script = ExtResource("8_f1ek2")
@@ -96,8 +79,4 @@ script = ExtResource("8_f1ek2")
 script = ExtResource("9_f1ek2")
 metadata/_custom_type_script = "uid://cecno1esqtfko"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=515919847]
-
-[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1481273882]
-tree_root = SubResource("AnimationNodeStateMachine_tx1dd")
-anim_player = NodePath("../AnimationPlayer")
+[node name="Timer" type="Timer" parent="StateMachine/AttackState" unique_id=1227143385]

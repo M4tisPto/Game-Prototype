@@ -10,7 +10,7 @@ size = Vector2(2092, 471)
 [node name="Game" type="Node2D" unique_id=1288219478]
 
 [node name="Player" parent="." unique_id=2057628453 instance=ExtResource("1_qxrlw")]
-position = Vector2(-306, -57.000015)
+position = Vector2(-1859, -537)
 scale = Vector2(0.45565394, 0.45565394)
 walk_speed = 650.05
 
@@ -20,7 +20,7 @@ zoom = Vector2(0.53, 0.53)
 script = ExtResource("3_wrm1d")
 
 [node name="Enemy" parent="." unique_id=123595629 instance=ExtResource("4_3dryh")]
-position = Vector2(641, 0)
+position = Vector2(1593, -513)
 scale = Vector2(0.19593027, 0.19593027)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=668882941]

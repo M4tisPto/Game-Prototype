@@ -7,7 +7,7 @@ func enter():
 
 func physics_update(delta):
 	var direction = Input.get_axis("move_left", "move_right")
-	var speed = player.run_speed if Input.is_action_pressed("sprint") else player.walk_speed
+	var speed = player.run_speed if Input.is_action_pressed("run") else player.walk_speed
 	if direction != 0:
 		var target_rotation = PI/3 if direction > 0 else -PI/3
 		player.player_model.rotation.y = lerp_angle(
@@ -29,3 +29,5 @@ func physics_update(delta):
 			state_machine.change_state($"../IdleState")
 		else:
 			state_machine.change_state($"../MoveRunState")
+	if Input.is_action_just_pressed("attack_button"):
+		state_machine.change_state($"../AttackState")

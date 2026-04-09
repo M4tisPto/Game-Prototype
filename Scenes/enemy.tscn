@@ -20,6 +20,7 @@ position = Vector2(0, -444)
 texture = SubResource("ViewportTexture_hghv2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=579787243]
+light_mask = 2
 position = Vector2(0, -257)
 shape = SubResource("RectangleShape2D_hghv2")
 

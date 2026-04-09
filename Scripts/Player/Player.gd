@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var rotation_speed = 10.0
 @onready var state_label: Label = $StateDebugLabel
 @export var jump_force = -400.0
+@onready var hitbox = $Hitbox
+@onready var attack_area = $AttackArea
 
 # Slam
 const GROUND_SLAM_SPEED = 1200.0
@@ -28,9 +30,19 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	state_machine.init(self)
 
+
+
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
 	state_machine.physics_update(delta)
 	move_and_slide()
+
+
+
+
+
+func _on_attack_area_body_entered(body):
+	if body.has_method("take_damage"):
+		body.take_damage(1)
