@@ -1,5 +1,8 @@
 extends State
 
+func get_state_name():
+	return "idle"
+
 func enter():
 	player.jumps_left = player.TOTAL_JUMPS
 
@@ -10,7 +13,7 @@ func physics_update(delta):
 	
 
 	if direction != 0:
-		state_machine.change_state($"../RunState")
+		state_machine.change_state($"../MoveRunState")
 	
 	# Salto
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():

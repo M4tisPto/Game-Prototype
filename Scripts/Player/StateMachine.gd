@@ -14,11 +14,12 @@ func init(p):
 func change_state(new_state):
 	if current_state:
 		current_state.exit()
-	
 	current_state = new_state
 	current_state.player = player
-	current_state.state_machine = self
 	
+	current_state.state_machine = self
+	if player.state_label:
+		player.state_label.text = "State: " + current_state.name
 	current_state.enter()
 
 func physics_update(delta):

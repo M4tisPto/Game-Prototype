@@ -1,5 +1,8 @@
 extends State
 
+func get_state_name():
+	return "Move and run"
+
 func physics_update(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	var speed = player.run_speed if Input.is_action_pressed("sprint") else player.walk_speed

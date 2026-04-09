@@ -1,5 +1,6 @@
 extends State
-
+func get_state_name():
+	return "Slam"
 func enter():
 	player.velocity.y = player.GROUND_SLAM_SPEED
 	player.velocity.x = 0
@@ -13,4 +14,4 @@ func physics_update(delta):
 		if direction == 0:
 			state_machine.change_state($"../IdleState")
 		else:
-			state_machine.change_state($"../RunState")
+			state_machine.change_state($"../MoveRunState")

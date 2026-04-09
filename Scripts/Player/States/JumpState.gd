@@ -1,5 +1,6 @@
 extends State
-
+func get_state_name():
+	return "Jump"
 func enter():
 	player.velocity.y = player.jump_force
 
@@ -9,6 +10,6 @@ func physics_update(delta):
 	
 	if player.is_on_floor():
 		if direction == 0:
-			state_machine.change_state($"../Idle")
+			state_machine.change_state($"../IdleState")
 		else:
-			state_machine.change_state($"../Run")
+			state_machine.change_state($"../MoveRunState")

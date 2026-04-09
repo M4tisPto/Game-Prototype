@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export_range(0, 1) var acceleration = 0.1
 @export_range(0, 1) var deceleration = 0.1
 @export var rotation_speed = 10.0
-
+@onready var state_label: Label = $StateDebugLabel
 @export var jump_force = -400.0
 
 # Slam
