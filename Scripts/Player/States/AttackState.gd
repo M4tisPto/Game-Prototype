@@ -6,6 +6,7 @@ var timer := 0.0
 func enter():
 	timer = attack_time
 	player.velocity.x *= 0.5
+	player.hitbox.monitoring = true
 
 func physics_update(delta):
 	timer -= delta
