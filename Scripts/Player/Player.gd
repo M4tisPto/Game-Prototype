@@ -10,6 +10,11 @@ extends CharacterBody2D
 @export var jump_force = -400.0
 @onready var hitbox = $Hitbox
 @onready var attack_area = $AttackArea
+@onready var healthBar: TextureProgressBar = $"../CanvasLayer/healthBar"
+
+var health: int
+var Maxhealth: int = 3
+var muerto = false
 
 # Slam
 const GROUND_SLAM_SPEED = 1200.0
@@ -29,18 +34,23 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	state_machine.init(self)
-
-
-
+	health = Maxhealth
+	healthBar.max_value = Maxhealth
+	healthBar.value = Maxhealth
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	state_machine.physics_update(delta)
 	move_and_slide()
-
-
-
+	
+func playertakeDamage():
+	if muerto:
+		return
+	health -= 1
+	healthBar.value = health
+	if health == 0:
+		get_tree().call_deferred("reload_current_scene")
 
 
 func _on_attack_area_body_entered(body):

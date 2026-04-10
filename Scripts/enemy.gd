@@ -23,8 +23,7 @@ func _on_hit_area_body_entered(body: Node2D) -> void:
 		is_dead = true
 		queue_free()
 
-
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		if body.has_method("takeDamage"):
-			body.takeDamage()
+		if body.has_method("playertakeDamage"):
+			body.playertakeDamage()

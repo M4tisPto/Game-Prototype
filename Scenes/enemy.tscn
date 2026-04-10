@@ -7,10 +7,13 @@
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hghv2"]
-size = Vector2(970, 534)
+size = Vector2(756, 534)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afpow"]
 size = Vector2(690, 305)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
+size = Vector2(234.5, 628)
 
 [node name="Enemy" type="Area2D" unique_id=123595629]
 script = ExtResource("1_1f0kj")
@@ -21,7 +24,7 @@ texture = SubResource("ViewportTexture_hghv2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=579787243]
 light_mask = 2
-position = Vector2(0, -257)
+position = Vector2(6, -257)
 shape = SubResource("RectangleShape2D_hghv2")
 
 [node name="HitArea" type="Area2D" parent="." unique_id=1217996947]
@@ -52,5 +55,16 @@ layers = 5
 light_energy = 10.0
 shadow_enabled = true
 
+[node name="DamageArea" type="Area2D" parent="." unique_id=1499909402]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=825512811]
+position = Vector2(-492, -296)
+shape = SubResource("RectangleShape2D_1f0kj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageArea" unique_id=1396270423]
+position = Vector2(511, -315)
+shape = SubResource("RectangleShape2D_1f0kj")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
