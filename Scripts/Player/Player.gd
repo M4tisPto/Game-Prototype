@@ -56,3 +56,7 @@ func playertakeDamage():
 func _on_attack_area_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(1)
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

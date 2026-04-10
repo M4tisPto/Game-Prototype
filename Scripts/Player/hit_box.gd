@@ -1,6 +1,5 @@
 extends Area2D
 
 
-func _ready():
-	monitoring = false
-	
+func _on_body_entered(body: Node2D) -> void:
+	print(body.name) # Replace with function body.

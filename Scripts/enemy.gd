@@ -6,7 +6,7 @@ var is_dead = false
 
 const SPEED = 60
 var direction = 2
-
+@onready var camera_2d: Camera2D = $"../Player/Camera2D"
 
 
 
@@ -27,3 +27,4 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		if body.has_method("playertakeDamage"):
 			body.playertakeDamage()
+			camera_2d.screen_shake(5, 0.5)

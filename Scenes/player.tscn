@@ -11,12 +11,12 @@
 [ext_resource type="Script" uid="uid://bahpvd6g0jbim" path="res://Scripts/Player/States/AirState.gd" id="8_f1ek2"]
 [ext_resource type="Script" uid="uid://2kplfh3hwnj8" path="res://Scripts/Player/States/AttackState.gd" id="9_f1ek2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1ek2"]
-radius = 80.0
-height = 400.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tx1dd"]
+size = Vector2(290, 908)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
-size = Vector2(224, 954)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gymyn"]
+radius = 119.0
+height = 960.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_v0iea"]
 viewport_path = NodePath("SubViewport")
@@ -36,12 +36,12 @@ monitoring = false
 script = ExtResource("2_tx1dd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1067876754]
-position = Vector2(440, -568)
-shape = SubResource("CapsuleShape2D_f1ek2")
+position = Vector2(436, -453)
+shape = SubResource("RectangleShape2D_tx1dd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51482863]
 position = Vector2(0, -467)
-shape = SubResource("RectangleShape2D_v0iea")
+shape = SubResource("CapsuleShape2D_gymyn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1533620887]
 position = Vector2(0, -464)
@@ -101,3 +101,5 @@ metadata/_custom_type_script = "uid://cecno1esqtfko"
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1481273882]
 tree_root = SubResource("AnimationNodeStateMachine_tx1dd")
 anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="body_entered" from="HitBox" to="HitBox" method="_on_body_entered"]
