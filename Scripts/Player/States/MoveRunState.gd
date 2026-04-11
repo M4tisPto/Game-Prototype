@@ -3,6 +3,7 @@ extends State
 func get_state_name():
 	return "Move and run"
 
+
 func physics_update(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	var speed = player.run_speed if Input.is_action_pressed("run") else player.walk_speed
@@ -15,7 +16,7 @@ func physics_update(delta):
 			target_rotation,
 			player.rotation_speed * delta
 		)
-	
+		player.facing_direction = direction
 	if direction == 0:
 		state_machine.change_state($"../IdleState")
 	

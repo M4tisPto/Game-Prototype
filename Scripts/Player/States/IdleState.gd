@@ -11,8 +11,8 @@ func physics_update(delta):
 	
 	player.velocity.x = move_toward(player.velocity.x, 0, player.walk_speed * player.deceleration)
 	
-
 	if direction != 0:
+		player.facing_direction = direction
 		state_machine.change_state($"../MoveRunState")
 	
 	# Jump

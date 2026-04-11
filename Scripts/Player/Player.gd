@@ -8,19 +8,19 @@ extends CharacterBody2D
 @export var rotation_speed = 10.0
 @onready var state_label: Label = $StateDebugLabel
 @export var jump_force = -400.0
-@onready var hitbox: CollisionShape2D = $HitBox/HitboxCollision
+@onready var hitbox: Area2D = $HitBox
 @onready var healthBar: TextureProgressBar = $"../CanvasLayer/healthBar"
 @onready var animacion_ataque: AnimationPlayer = $Animacion_d_ataque
 @onready var iframe_timer: Timer = $Iframe_timer
-@onready var invincible_audio: AudioStreamPlayer2D = $Invincible
+var facing_direction := 1
 
 
 
 var health: int
 var Maxhealth: int = 3
 var invincible = false
-var muerto = false
-var atacando = false
+var dead = false
+var attack = false
 
 # Slam
 const GROUND_SLAM_SPEED = 1200.0
@@ -52,7 +52,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func playertakeDamage():
-	if muerto or invincible:
+	if dead or invincible:
 		return
 	health -= 1
 	healthBar.value = health
@@ -60,21 +60,9 @@ func playertakeDamage():
 		get_tree().call_deferred("reload_current_scene")
 	
 	
-func _unhandled_input(event):
-	if event.is_action_pressed("atacar") and not atacando:
-		atacar()
-		
-func atacar():
-	atacando = true
-	invincible = true
-	animacion_ataque.play("ataque")
-	invincible_audio.play()
-
-	
 func _on_animacion_d_ataque_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ataque":
-		atacando = false
-		invincible = false
+		state_machine.change_state($"StateMachine/IdleState")
 
 		
 func _on_iframe_timer_timeout() -> void:

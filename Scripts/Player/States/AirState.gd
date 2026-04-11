@@ -15,6 +15,7 @@ func physics_update(delta):
 			target_rotation,
 			player.rotation_speed * delta
 		)
+		player.facing_direction = direction
 	player.velocity.x = direction * speed
 	
 	if Input.is_action_just_pressed("jump") and player.jumps_left > 0:
