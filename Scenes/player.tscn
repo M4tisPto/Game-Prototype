@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b18fomgic1ap" path="res://Scripts/Player/Player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://bavq107j1ul6x" path="res://Model/Protagonist/low_poly_prot.glb" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://dq6gj4s4g20t1" path="res://Scripts/Player/hit_box.gd" id="2_tx1dd"]
+[ext_resource type="Texture2D" uid="uid://0k1k5rk0kc2n" path="res://Model/Protagonist/slash.png" id="3_gymyn"]
 [ext_resource type="Script" uid="uid://cdfrpqlgutfx5" path="res://Scripts/Player/StateMachine.gd" id="3_x3wgy"]
 [ext_resource type="Script" uid="uid://ddl4574sppf3j" path="res://Scripts/Player/States/MoveRunState.gd" id="4_3smsa"]
 [ext_resource type="Script" uid="uid://bj0nwsavnov82" path="res://Scripts/Player/States/JumpState.gd" id="5_8erm5"]
@@ -27,17 +27,83 @@ font_size = 150
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tx1dd"]
 graph_offset = Vector2(-181, -31)
 
+[sub_resource type="Animation" id="Animation_gymyn"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBox/HitboxCollision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBox/HitboxCollision/Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_pu2lt"]
+resource_name = "ataque"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBox/HitboxCollision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBox/HitboxCollision/Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.99, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ukyrk"]
+_data = {
+&"RESET": SubResource("Animation_gymyn"),
+&"ataque": SubResource("Animation_pu2lt")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=2057628453]
 script = ExtResource("1_cvnsp")
 
-[node name="HitBox" type="Area2D" parent="." unique_id=599792304]
+[node name="HitBox" type="Area2D" parent="." unique_id=599792304 groups=["player_attack"]]
 light_mask = 4
-monitoring = false
-script = ExtResource("2_tx1dd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1067876754]
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitBox" unique_id=1067876754]
 position = Vector2(436, -453)
 shape = SubResource("RectangleShape2D_tx1dd")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="HitBox/HitboxCollision" unique_id=1839744111]
+visible = false
+position = Vector2(3, 18)
+scale = Vector2(3.7, 6.4600005)
+texture = ExtResource("3_gymyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51482863]
 position = Vector2(0, -467)
@@ -102,4 +168,12 @@ metadata/_custom_type_script = "uid://cecno1esqtfko"
 tree_root = SubResource("AnimationNodeStateMachine_tx1dd")
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="Animacion_d_ataque" type="AnimationPlayer" parent="." unique_id=1505635548]
+libraries/ = SubResource("AnimationLibrary_ukyrk")
+
+[node name="Iframe_timer" type="Timer" parent="." unique_id=1359342085]
+one_shot = true
+
 [connection signal="body_entered" from="HitBox" to="HitBox" method="_on_body_entered"]
+[connection signal="animation_finished" from="Animacion_d_ataque" to="." method="_on_animacion_d_ataque_animation_finished"]
+[connection signal="timeout" from="Iframe_timer" to="." method="_on_iframe_timer_timeout"]

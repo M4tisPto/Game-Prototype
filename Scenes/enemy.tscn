@@ -74,5 +74,6 @@ shape = SubResource("RectangleShape2D_287tu")
 debug_color = Color(0.9764706, 0, 0, 0.41960785)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_shape_entered" from="HitArea" to="." method="_on_hit_area_area_shape_entered"]
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

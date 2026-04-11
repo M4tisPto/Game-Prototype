@@ -8,13 +8,18 @@ extends CharacterBody2D
 @export var rotation_speed = 10.0
 @onready var state_label: Label = $StateDebugLabel
 @export var jump_force = -400.0
-@onready var hitbox = $Hitbox
-@onready var attack_area = $AttackArea
+@onready var hitbox: CollisionShape2D = $HitBox/HitboxCollision
 @onready var healthBar: TextureProgressBar = $"../CanvasLayer/healthBar"
+@onready var animacion_ataque: AnimationPlayer = $Animacion_d_ataque
+@onready var iframe_timer: Timer = $Iframe_timer
+
+
 
 var health: int
 var Maxhealth: int = 3
+var invincible = false
 var muerto = false
+var atacando = false
 
 # Slam
 const GROUND_SLAM_SPEED = 1200.0
@@ -37,6 +42,7 @@ func _ready():
 	health = Maxhealth
 	healthBar.max_value = Maxhealth
 	healthBar.value = Maxhealth
+	hitbox.set_deferred("disabled", true)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -45,18 +51,28 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func playertakeDamage():
-	if muerto:
+	if muerto or invincible:
 		return
 	health -= 1
 	healthBar.value = health
 	if health == 0:
 		get_tree().call_deferred("reload_current_scene")
+	
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("atacar") and not atacando:
+		atacar()
+		
+func atacar():
+	atacando = true
+	invincible = true
+	animacion_ataque.play("ataque")
 
+	
+func _on_animacion_d_ataque_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "ataque":
+		atacando = false
 
-func _on_attack_area_body_entered(body):
-	if body.has_method("take_damage"):
-		body.take_damage(1)
-
-
-func _on_hit_box_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+		
+func _on_iframe_timer_timeout() -> void:
+	invincible = false

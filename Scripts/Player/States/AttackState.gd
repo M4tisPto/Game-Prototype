@@ -1,4 +1,5 @@
 extends State
+@onready var hit_box: Area2D = $"../../HitBox"
 
 var attack_time := 0.2
 var timer := 0.0
@@ -6,6 +7,7 @@ var timer := 0.0
 func enter():
 	timer = attack_time
 	player.velocity.x *= 0.5
+	
 
 func physics_update(delta):
 	timer -= delta
@@ -27,3 +29,5 @@ func physics_update(delta):
 				state_machine.change_state($"../MoveRunState")
 		else:
 			state_machine.change_state($"../AirState")
+			
+	
