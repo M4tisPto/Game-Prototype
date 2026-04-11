@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var healthBar: TextureProgressBar = $"../CanvasLayer/healthBar"
 @onready var animacion_ataque: AnimationPlayer = $Animacion_d_ataque
 @onready var iframe_timer: Timer = $Iframe_timer
+@onready var invincible_audio: AudioStreamPlayer2D = $Invincible
 
 
 
@@ -67,11 +68,13 @@ func atacar():
 	atacando = true
 	invincible = true
 	animacion_ataque.play("ataque")
+	invincible_audio.play()
 
 	
 func _on_animacion_d_ataque_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ataque":
 		atacando = false
+		invincible = false
 
 		
 func _on_iframe_timer_timeout() -> void:
