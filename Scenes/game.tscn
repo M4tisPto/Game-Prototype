@@ -14,10 +14,10 @@ size = Vector2(6016, 393)
 size = Vector2(849, 576.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1l0tm"]
-size = Vector2(6016, 520)
+size = Vector2(6016, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v158k"]
-size = Vector2(384, 699.5)
+size = Vector2(384, 1019.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4fw4"]
 size = Vector2(1408, 458)
@@ -37,21 +37,9 @@ position = Vector2(2.194648, -603.5282)
 zoom = Vector2(0.53, 0.53)
 script = ExtResource("3_wrm1d")
 
-[node name="Enemy" parent="." unique_id=123595629 instance=ExtResource("4_3dryh")]
-position = Vector2(2912, -456)
-scale = Vector2(0.19593027, 0.19593027)
-
-[node name="Enemy2" parent="." unique_id=1499682681 instance=ExtResource("4_3dryh")]
-position = Vector2(2520, -456)
-scale = Vector2(0.19593027, 0.19593027)
-
-[node name="Enemy3" parent="." unique_id=1032218448 instance=ExtResource("4_3dryh")]
-position = Vector2(2112, -456)
-scale = Vector2(0.19593027, 0.19593027)
-
-[node name="Enemy4" parent="." unique_id=1169747041 instance=ExtResource("4_3dryh")]
-position = Vector2(1768, -456)
-scale = Vector2(0.19593027, 0.19593027)
+[node name="Enemy" parent="." unique_id=1872012621 instance=ExtResource("4_3dryh")]
+position = Vector2(-720, -448)
+scale = Vector2(0.22251941, 0.22251941)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=668882941]
 position = Vector2(-1846, -531)
@@ -67,12 +55,12 @@ shape = SubResource("RectangleShape2D_i6g32")
 debug_color = Color(0.84705883, 0, 0.65882355, 0.41960785)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=2111632067]
-position = Vector2(1974, -881)
+position = Vector2(1974, -1041)
 shape = SubResource("RectangleShape2D_1l0tm")
 debug_color = Color(0.84705883, 0, 0.65882355, 0.41960785)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1767420850]
-position = Vector2(-842, -271.25)
+position = Vector2(-842, -431.25)
 shape = SubResource("RectangleShape2D_v158k")
 debug_color = Color(0.84705883, 0, 0.65882355, 0.41960785)
 
