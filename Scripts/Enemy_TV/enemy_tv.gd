@@ -31,6 +31,8 @@ func on_player_detected(body):
 		var direction = sign(target.position.x - position.x)
 		velocity.x = direction * speed
 		is_player_in_range = true
+	else:
+		velocity.x = 0
 		
 func _on_player_lost(body):
 	if body.name == "Player":
