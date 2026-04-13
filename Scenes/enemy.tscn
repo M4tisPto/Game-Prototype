@@ -18,6 +18,128 @@ size = Vector2(234.5, 628)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
 size = Vector2(804.5, 396)
 
+[sub_resource type="Animation" id="Animation_ghaa6"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1615357, 1.1615357), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_1dp5w"]
+resource_name = "Idle"
+length = 1.3333334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.162, 1.162), Vector2(1.162, 1.6)]
+}
+
+[sub_resource type="Animation" id="Animation_1f0kj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageArea/CollisionShape2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1615357, 1.1615357)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack Msg:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_afpow"]
+resource_name = "ataque"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageArea/CollisionShape2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5707964]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1615357, 1.1615357), Vector2(1.7, 1.162)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack Msg:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_287tu"]
+_data = {
+&"Death": SubResource("Animation_ghaa6"),
+&"Idle": SubResource("Animation_1dp5w"),
+&"RESET": SubResource("Animation_1f0kj"),
+&"ataque": SubResource("Animation_afpow")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1f0kj"]
+radius = 612.0
+height = 4426.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1872012621]
 script = ExtResource("1_1f0kj")
 
@@ -61,7 +183,7 @@ shadow_enabled = true
 [node name="DamageArea" type="Area2D" parent="." unique_id=1499909402]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=825512811]
-position = Vector2(-509, -429)
+position = Vector2(-509, -432)
 shape = SubResource("RectangleShape2D_1f0kj")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageArea" unique_id=1396270423]
@@ -73,6 +195,37 @@ position = Vector2(12.75, -355)
 shape = SubResource("RectangleShape2D_287tu")
 debug_color = Color(0.9764706, 0, 0, 0.41960785)
 
-[connection signal="area_shape_entered" from="HitArea" to="." method="_on_hit_area_area_shape_entered"]
+[node name="Enemy_Animation" type="AnimationPlayer" parent="." unique_id=820908200]
+libraries/ = SubResource("AnimationLibrary_287tu")
+
+[node name="Attack Msg" type="Label" parent="." unique_id=674775010]
+visible = false
+offset_left = -282.0
+offset_top = -1216.0
+offset_right = 308.0
+offset_bottom = -965.0
+theme_override_font_sizes/font_size = 90
+text = "te woa atacar
+"
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=684492231]
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea" unique_id=1247638690]
+position = Vector2(0, -619)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1f0kj")
+debug_color = Color(0.90588236, 0, 0.9882353, 0.20392157)
+
+[node name="debug" type="Label" parent="." unique_id=1076313873]
+offset_left = -299.0
+offset_top = -1447.0
+offset_right = 325.0
+offset_bottom = -1174.0
+theme_override_font_sizes/font_size = 200
+text = "Debug"
+
+[connection signal="area_shape_entered" from="HitArea" to="." method="_on_death_area_entered"]
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
-[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="on_player_detected"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_player_lost"]
