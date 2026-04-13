@@ -41,6 +41,26 @@ script = ExtResource("3_wrm1d")
 position = Vector2(-720, -448)
 scale = Vector2(0.22251941, 0.22251941)
 
+[node name="Enemy2" parent="." unique_id=820284592 instance=ExtResource("4_3dryh")]
+position = Vector2(-720, -448)
+scale = Vector2(0.22251941, 0.22251941)
+
+[node name="Enemy3" parent="." unique_id=1161119556 instance=ExtResource("4_3dryh")]
+position = Vector2(1622, -540)
+scale = Vector2(0.22251941, 0.22251941)
+
+[node name="Enemy4" parent="." unique_id=2009944293 instance=ExtResource("4_3dryh")]
+position = Vector2(-1433, -473)
+scale = Vector2(0.22251941, 0.22251941)
+
+[node name="Enemy5" parent="." unique_id=691308189 instance=ExtResource("4_3dryh")]
+position = Vector2(750, -448)
+scale = Vector2(0.22251941, 0.22251941)
+
+[node name="Enemy6" parent="." unique_id=80508598 instance=ExtResource("4_3dryh")]
+position = Vector2(-53, -434)
+scale = Vector2(0.22251941, 0.22251941)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=668882941]
 position = Vector2(-1846, -531)
 
@@ -78,8 +98,10 @@ debug_color = Color(0.84705883, 0, 0.65882355, 0.41960785)
 
 [node name="healthBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=597890180]
 custom_minimum_size = Vector2(250, 250)
-offset_right = 32.0
-offset_bottom = 32.0
+offset_left = 45.0
+offset_top = -15.0
+offset_right = 295.0
+offset_bottom = 235.0
 scale = Vector2(8, 8)
 texture_under = ExtResource("4_i6g32")
 texture_over = ExtResource("5_1l0tm")
