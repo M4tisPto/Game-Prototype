@@ -7,6 +7,7 @@ func get_state_name():
 func enter():
 	player.jumps_left = player.TOTAL_JUMPS
 
+@warning_ignore("unused_parameter")
 func physics_update(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	
@@ -26,3 +27,13 @@ func physics_update(delta):
 	
 	if Input.is_action_just_pressed("attack_button"):
 		state_machine.change_state($"../AttackState")
+		
+	if Input.is_action_just_pressed("move_left") and Input.is_action_just_pressed("attack_button"):
+		state_machine.change_state($"../AttackFleeState")
+		
+	if Input.is_action_pressed("up") and Input.is_action_just_pressed("attack_button"):
+		state_machine.change_state($"../AttackUpState")
+		
+	if  Input.is_action_pressed("fast_fall") and Input.is_action_just_pressed("attack_button"):
+		state_machine.change_state($"../AttackDownState")
+	

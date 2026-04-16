@@ -14,8 +14,6 @@ extends CharacterBody2D
 @onready var iframe_timer: Timer = $Iframe_timer
 var facing_direction := 1
 
-
-
 var health: int
 var Maxhealth: int = 3
 var invincible = false
@@ -61,8 +59,9 @@ func playertakeDamage():
 	
 	
 func _on_animacion_d_ataque_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "ataque":
+	if anim_name == "ataque" or anim_name == "ataque_derecha" or anim_name == "ataque_flee" or anim_name == "ataque_up" or anim_name == "ataque_down":
 		state_machine.change_state($"StateMachine/IdleState")
+
 
 		
 func _on_iframe_timer_timeout() -> void:

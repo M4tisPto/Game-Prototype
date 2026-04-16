@@ -4,6 +4,7 @@ func get_state_name():
 func enter():
 	player.velocity.y = player.jump_force
 
+@warning_ignore("unused_parameter")
 func physics_update(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	player.velocity.x = direction * player.speed
