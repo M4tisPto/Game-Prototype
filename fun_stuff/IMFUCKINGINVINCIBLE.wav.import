@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bwbg4idndygav"
-path="res://.godot/imported/IMFUCKINGINVINCIBLE.wav-1364e1118c3a57e9d6a65c6f32d25bbb.sample"
+path="res://.godot/imported/IMFUCKINGINVINCIBLE.wav-3bd1a17ebd6afb973a08f2fab2191739.sample"
 
 [deps]
 
-source_file="res://Model/Protagonist/IMFUCKINGINVINCIBLE.wav"
-dest_files=["res://.godot/imported/IMFUCKINGINVINCIBLE.wav-1364e1118c3a57e9d6a65c6f32d25bbb.sample"]
+source_file="res://fun_stuff/IMFUCKINGINVINCIBLE.wav"
+dest_files=["res://.godot/imported/IMFUCKINGINVINCIBLE.wav-3bd1a17ebd6afb973a08f2fab2191739.sample"]
 
 [params]
 

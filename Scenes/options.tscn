@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://b0y0eh5jnl851"]
+
+[ext_resource type="Script" uid="uid://cae8hv1iayna" path="res://Scripts/options.gd" id="1_4tmxy"]
+[ext_resource type="Texture2D" uid="uid://ipdlgwanugks" path="res://fun_stuff/CECIL!!.png" id="1_prnvy"]
+[ext_resource type="Texture2D" uid="uid://chdd2w1prly4c" path="res://fun_stuff/r_u_sure.jpg" id="3_kftxf"]
+[ext_resource type="AudioStream" uid="uid://qrbs2u727ioh" path="res://fun_stuff/i-need-you-cecil_UfM8J59.mp3" id="3_qyyw6"]
+[ext_resource type="AudioStream" uid="uid://keq7fubrrspl" path="res://fun_stuff/omni-man-are-you-sure.mp3" id="4_ww8vx"]
+
+[node name="Control" type="Control" unique_id=1317123348]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4tmxy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=261211485]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1860280398]
+position = Vector2(576.875, 328.00003)
+scale = Vector2(9.19246, 1.6672934)
+texture = ExtResource("1_prnvy")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1224551772]
+offset_left = 46.0
+offset_top = 125.0
+offset_right = 1178.0
+offset_bottom = 191.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.35245812, 0.45463073, 0.73676, 1)
+theme_override_font_sizes/font_size = 42
+text = "hello these r the options thank u, u can go back now"
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1635165346]
+offset_left = 306.0
+offset_top = 330.0
+offset_right = 877.0
+offset_bottom = 553.0
+theme_override_font_sizes/font_size = 67
+text = "go back"
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer" unique_id=1147937225]
+visible = false
+position = Vector2(582, 217)
+scale = Vector2(2.675, 1.6777778)
+texture = ExtResource("3_kftxf")
+
+[node name="cecil" type="AudioStreamPlayer2D" parent="." unique_id=1333143450]
+stream = ExtResource("3_qyyw6")
+
+[node name="r u sure" type="AudioStreamPlayer2D" parent="." unique_id=1552163609]
+stream = ExtResource("4_ww8vx")
+
+[node name="Timer_4_funzies" type="Timer" parent="." unique_id=857273529]
+wait_time = 1.356
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer_4_funzies" to="." method="_on_timer_4_funzies_timeout"]

@@ -56,13 +56,10 @@ func playertakeDamage():
 	healthBar.value = health
 	if health == 0:
 		get_tree().call_deferred("reload_current_scene")
-	
-	
+		
 func _on_animacion_d_ataque_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ataque" or anim_name == "ataque_derecha" or anim_name == "ataque_flee" or anim_name == "ataque_up" or anim_name == "ataque_down":
 		state_machine.change_state($"StateMachine/IdleState")
-
-
 		
 func _on_iframe_timer_timeout() -> void:
 	invincible = false
