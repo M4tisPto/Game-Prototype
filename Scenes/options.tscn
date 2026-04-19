@@ -8,48 +8,52 @@
 
 [node name="Control" type="Control" unique_id=1317123348]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("1_4tmxy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=261211485]
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1860280398]
-position = Vector2(576.875, 328.00003)
+position = Vector2(1054.125, 579.625)
 scale = Vector2(9.19246, 1.6672934)
 texture = ExtResource("1_prnvy")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1224551772]
-offset_left = 46.0
-offset_top = 125.0
-offset_right = 1178.0
-offset_bottom = 191.0
+offset_left = 523.25
+offset_top = 376.62503
+offset_right = 1655.25
+offset_bottom = 442.62503
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.35245812, 0.45463073, 0.73676, 1)
 theme_override_font_sizes/font_size = 42
 text = "hello these r the options thank u, u can go back now"
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=1635165346]
-offset_left = 306.0
-offset_top = 330.0
-offset_right = 877.0
-offset_bottom = 553.0
+offset_left = 783.25
+offset_top = 581.625
+offset_right = 1354.25
+offset_bottom = 804.625
 theme_override_font_sizes/font_size = 67
 text = "go back"
 
 [node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer" unique_id=1147937225]
-visible = false
-position = Vector2(582, 217)
+position = Vector2(1050, 468)
 scale = Vector2(2.675, 1.6777778)
 texture = ExtResource("3_kftxf")
 
 [node name="cecil" type="AudioStreamPlayer2D" parent="." unique_id=1333143450]
+position = Vector2(477.25, 251.62503)
 stream = ExtResource("3_qyyw6")
 
 [node name="r u sure" type="AudioStreamPlayer2D" parent="." unique_id=1552163609]
+position = Vector2(477.25, 251.62503)
 stream = ExtResource("4_ww8vx")
 
 [node name="Timer_4_funzies" type="Timer" parent="." unique_id=857273529]
