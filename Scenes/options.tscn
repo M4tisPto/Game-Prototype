@@ -44,6 +44,7 @@ theme_override_font_sizes/font_size = 67
 text = "go back"
 
 [node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer" unique_id=1147937225]
+visible = false
 position = Vector2(1050, 468)
 scale = Vector2(2.675, 1.6777778)
 texture = ExtResource("3_kftxf")
