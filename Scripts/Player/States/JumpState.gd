@@ -14,3 +14,8 @@ func physics_update(delta):
 			state_machine.change_state($"../IdleState")
 		else:
 			state_machine.change_state($"../MoveRunState")
+	if Input.is_action_just_pressed("attack_button"):
+		state_machine.change_state($"../AttackState")
+		
+	if Input.is_action_pressed("move_right") and Input.is_action_just_pressed("attack_button"):
+		state_machine.change_state($"../AttackRightState")
