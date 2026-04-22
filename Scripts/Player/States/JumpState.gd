@@ -8,6 +8,9 @@ func enter():
 func physics_update(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	player.velocity.x = direction * player.speed
+	if Input.is_action_pressed("move_right") and Input.is_action_just_pressed("attack_button"):
+		state_machine.change_state($"../AttackRightState")
+	
 	
 	if player.is_on_floor():
 		if direction == 0:
@@ -17,5 +20,3 @@ func physics_update(delta):
 	if Input.is_action_just_pressed("attack_button"):
 		state_machine.change_state($"../AttackState")
 		
-	if Input.is_action_pressed("move_right") and Input.is_action_just_pressed("attack_button"):
-		state_machine.change_state($"../AttackRightState")
