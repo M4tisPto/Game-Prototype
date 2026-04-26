@@ -40,5 +40,3 @@ func physics_update(delta):
 	if Input.is_action_pressed("move_right") and Input.is_action_just_pressed("attack_button"):
 		state_machine.change_state($"../AttackRightState")
 		
-	if not player.is_on_floor() and Input.is_action_pressed("move_right") and Input.is_action_just_pressed("attack_button"):
-		state_machine.change_state($"../AttackRightState")

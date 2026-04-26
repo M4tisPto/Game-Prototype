@@ -24,6 +24,8 @@ func physics_update(delta):
 			target_rotation,
 			player.rotation_speed * delta
 		)
+		if !player.is_on_floor():
+			state_machine.change_state($"../AirState")
 func exit():
 	player.hitbox.monitoring = false
 	player.attack = false

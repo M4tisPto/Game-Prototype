@@ -182,6 +182,10 @@ tracks/1/keys = {
 "values": [false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_qqcod"]
+resource_name = "ataque_aire"
+length = 0.6666667
+
 [sub_resource type="Animation" id="Animation_ukyrk"]
 resource_name = "ataque_derecha"
 length = 0.73333335
@@ -298,6 +302,7 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_gymyn"),
 &"ataque": SubResource("Animation_pu2lt"),
+&"ataque_aire": SubResource("Animation_qqcod"),
 &"ataque_derecha": SubResource("Animation_ukyrk"),
 &"ataque_down": SubResource("Animation_fd4e3"),
 &"ataque_flee": SubResource("Animation_7dp3o"),
