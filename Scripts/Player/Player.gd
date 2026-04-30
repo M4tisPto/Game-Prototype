@@ -38,6 +38,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	state_machine.init(self)
+	for child in hitbox.get_children():
+		if child is CollisionShape2D:
+			child.disabled = true
 	health = Maxhealth
 	healthBar.max_value = Maxhealth
 	healthBar.value = Maxhealth

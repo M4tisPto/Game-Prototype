@@ -31,7 +31,7 @@ size = Vector2(941, 1672)
 script = ExtResource("1_v158k")
 
 [node name="Player" parent="." unique_id=2057628453 instance=ExtResource("1_qxrlw")]
-position = Vector2(-1859, -537)
+position = Vector2(-2120, -464)
 scale = Vector2(0.45565394, 0.45565394)
 walk_speed = 650.05
 

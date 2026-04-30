@@ -1,35 +1,57 @@
 extends State
 
-var hitbox_offset := 50
+var attack_time := 0.0
+
+const WINDUP = 0.1
+const ACTIVE = 0.1
+const RECOVERY = 0.2
+
+var attack_dir = "right"
 
 func enter():
-	player.animacion_ataque.stop()
-	player.animacion_ataque.play("ataque")
-	player.animacion_ataque.seek(0, true)
-	player.hitbox.monitoring = true
+	attack_time = 0.0
 	player.attack = true
-	player.hitbox.scale.x = player.facing_direction
-	player.invincible = true
-	player.iframe_timer.start()
 	
+	if Input.is_action_pressed("ui_up"):
+		attack_dir = "up"
+	elif Input.is_action_pressed("ui_down"):
+		attack_dir = "down"
+	else:
+		attack_dir = "right" if player.facing_direction > 0 else "left"
 
 func physics_update(delta):
-	var direction = Input.get_axis("move_left", "move_right")
-	var speed = player.run_speed if Input.is_action_pressed("run") else player.walk_speed
-	player.velocity.x = move_toward(player.velocity.x, direction * speed, speed * player.acceleration)
-	if direction != 0:
-		var target_rotation = PI/3 if direction > 0 else -PI/3
-		player.player_model.rotation.y = lerp_angle(
-			player.player_model.rotation.y,
-			target_rotation,
-			player.rotation_speed * delta
-		)
-	if !player.is_on_floor():
-		state_machine.change_state($"../AirState")
-func exit():
-	player.hitbox.monitoring = false
-	player.attack = false
-	player.invincible = false
+	attack_time += delta
 
-func on_attack_finished():
-	state_machine.change_state($"../AttackState")
+
+	if attack_time >= WINDUP and attack_time < WINDUP + ACTIVE:
+		activate_hitbox()
+		
+	else:
+		deactivate_hitbox()
+
+	if attack_time >= WINDUP + ACTIVE + RECOVERY:
+		if player.is_on_floor():
+			state_machine.change_state($"../IdleState")
+		else:
+			state_machine.change_state($"../AirState")
+
+func exit():
+	deactivate_hitbox()
+	player.attack = false
+
+func activate_hitbox():
+	player.hitbox.scale = Vector2(1.2, 1.2)
+	match attack_dir:
+		"right":
+			player.hitbox.get_node("HitboxCollisionRight").disabled = false
+		"left":
+			player.hitbox.get_node("HitboxCollisionLeft").disabled = false
+		"up":
+			player.hitbox.get_node("HitboxCollisionUp").disabled = false
+		"down":
+			player.hitbox.get_node("HitboxCollisionDown").disabled = false
+
+func deactivate_hitbox():
+	for child in player.hitbox.get_children():
+		if child is CollisionShape2D:
+			child.disabled = true
