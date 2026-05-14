@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dcbcqhfw6iaii"]
+
+[ext_resource type="PackedScene" uid="uid://bybuwvtw4g2gr" path="res://Model/Protagonist/Sophia_Model.fbx" id="1_otq81"]
+
+[node name="Sophia_Model" unique_id=1398917728 instance=ExtResource("1_otq81")]
+
+[node name="Skeleton3D" parent="rig_001" parent_id_path=PackedInt32Array(1251878087) index="0" unique_id=1209960772]
+bones/9/rotation = Quaternion(0.14631744, 0.76323783, 0.5184155, -0.35679784)
+bones/11/rotation = Quaternion(-0.14631735, 0.76323783, 0.51841563, 0.3567977)
+bones/11/scale = Vector3(1, 20.663702, 1)
+bones/13/rotation = Quaternion(0.99782735, -0.026053723, 0.05717852, -0.019813182)
+bones/15/rotation = Quaternion(0.99782735, 0.026053723, -0.05717852, -0.019813182)
+bones/29/rotation = Quaternion(0.14109896, 0.7168433, 0.46757945, -0.4975904)
+bones/59/rotation = Quaternion(-0.0065531232, 0.7644519, -0.64461905, -0.006048285)
+bones/61/rotation = Quaternion(0.7060931, -0.7053064, -0.05043186, -0.037843578)
+bones/108/rotation = Quaternion(-0.006553144, 0.7644519, -0.64461905, -0.0060482672)
+bones/123/rotation = Quaternion(-0.006553022, 0.7644519, -0.64461905, -0.0060481955)
+bones/178/rotation = Quaternion(0.5937177, 0.71074885, -0.36717185, -0.08671955)
+bones/183/rotation = Quaternion(0.58395565, 0.70427674, -0.3944694, -0.08592992)
+bones/197/rotation = Quaternion(-0.19669671, 0.87346405, -0.43297538, -0.10441892)
+bones/228/rotation = Quaternion(-0.19669685, 0.87346405, -0.43297538, -0.10441872)
+bones/231/rotation = Quaternion(-0.19669689, 0.8734641, -0.4329752, -0.10441887)
+bones/244/rotation = Quaternion(0.56378603, 0.6921418, -0.4244582, -0.15139446)
+bones/269/rotation = Quaternion(1.171992e-07, -0.02237381, 0.9997497, 2.6228495e-09)

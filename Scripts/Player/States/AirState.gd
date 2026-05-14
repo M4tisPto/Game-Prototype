@@ -22,8 +22,6 @@ func physics_update(delta):
 		player.velocity.y = player.jump_force
 		player.jumps_left -= 1
 	
-	if Input.is_action_just_pressed("fast_fall"):
-		state_machine.change_state($"../FastFallState")
 	if Input.is_action_just_pressed("fast_fall") and Input.is_action_just_pressed("attack_button"):
 		state_machine.change_state($"../AttackDownState")
 	
@@ -34,19 +32,3 @@ func physics_update(delta):
 			state_machine.change_state($"../MoveRunState")
 	if Input.is_action_just_pressed("attack_button"):
 		state_machine.change_state($"../AttackState")
-		
-	if Input.is_action_just_pressed("move_left") and Input.is_action_just_pressed("attack_button"):
-		state_machine.change_state($"../AttackFleeState")
-		
-	if Input.is_action_pressed("up") and Input.is_action_just_pressed("attack_button"):
-		state_machine.change_state($"../AttackUpState")
-		
-	if  Input.is_action_pressed("fast_fall") and Input.is_action_just_pressed("attack_button"):
-		state_machine.change_state($"../AttackDownState")
-	
-	if Input.is_action_pressed("move_right") and Input.is_action_just_pressed("attack_button"):
-		state_machine.change_state($"../AttackRightState")
-		
-	if Input.is_action_pressed("move_right") and Input.is_action_just_pressed("attack_button"):
-		state_machine.change_state($"../AttackRightState")
-		

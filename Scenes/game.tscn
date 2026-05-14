@@ -10,22 +10,13 @@
 [ext_resource type="AudioStream" uid="uid://b61r5w6ulxkor" path="res://Music/Level_x_Maids_Kobayashi2.mp3" id="8_h4fw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
-size = Vector2(6016, 393)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
-size = Vector2(849, 576.5)
+size = Vector2(6735, 393)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1l0tm"]
 size = Vector2(6016, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v158k"]
 size = Vector2(384, 1019.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4fw4"]
-size = Vector2(1408, 458)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldgsr"]
-size = Vector2(941, 1672)
 
 [node name="Game" type="Node2D" unique_id=1288219478]
 script = ExtResource("1_v158k")
@@ -41,41 +32,16 @@ zoom = Vector2(0.53, 0.53)
 script = ExtResource("3_wrm1d")
 
 [node name="Enemy" parent="." unique_id=1872012621 instance=ExtResource("4_3dryh")]
-position = Vector2(-720, -448)
-scale = Vector2(0.22251941, 0.22251941)
-
-[node name="Enemy2" parent="." unique_id=820284592 instance=ExtResource("4_3dryh")]
-position = Vector2(-720, -448)
-scale = Vector2(0.22251941, 0.22251941)
-
-[node name="Enemy3" parent="." unique_id=1161119556 instance=ExtResource("4_3dryh")]
-position = Vector2(1622, -540)
-scale = Vector2(0.22251941, 0.22251941)
-
-[node name="Enemy4" parent="." unique_id=2009944293 instance=ExtResource("4_3dryh")]
-position = Vector2(-1433, -473)
-scale = Vector2(0.22251941, 0.22251941)
-
-[node name="Enemy5" parent="." unique_id=691308189 instance=ExtResource("4_3dryh")]
-position = Vector2(750, -448)
-scale = Vector2(0.22251941, 0.22251941)
-
-[node name="Enemy6" parent="." unique_id=80508598 instance=ExtResource("4_3dryh")]
-position = Vector2(-53, -434)
+position = Vector2(2617, -556)
 scale = Vector2(0.22251941, 0.22251941)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=668882941]
 position = Vector2(-1846, -531)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1345871465]
-position = Vector2(1974, 279.5)
+position = Vector2(2333.5, 279.5)
 shape = SubResource("RectangleShape2D_wrm1d")
 debug_color = Color(0.8467443, 6.593913e-05, 0.65733033, 0.41960785)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1656922992]
-position = Vector2(5406, 187)
-shape = SubResource("RectangleShape2D_i6g32")
-debug_color = Color(0.84705883, 0, 0.65882355, 0.41960785)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=2111632067]
 position = Vector2(1974, -1041)
@@ -85,16 +51,6 @@ debug_color = Color(0.84705883, 0, 0.65882355, 0.41960785)
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1767420850]
 position = Vector2(-842, -431.25)
 shape = SubResource("RectangleShape2D_v158k")
-debug_color = Color(0.84705883, 0, 0.65882355, 0.41960785)
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1077807417]
-position = Vector2(5686, -912)
-shape = SubResource("RectangleShape2D_h4fw4")
-debug_color = Color(0.84705883, 0, 0.65882355, 0.41960785)
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=346670559]
-position = Vector2(6860.5, -305)
-shape = SubResource("RectangleShape2D_ldgsr")
 debug_color = Color(0.84705883, 0, 0.65882355, 0.41960785)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2027297203]

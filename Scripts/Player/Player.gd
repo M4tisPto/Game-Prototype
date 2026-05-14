@@ -29,11 +29,15 @@ const TOTAL_JUMPS: int = 2
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Cositas chistosas
-@onready var player_model: Node3D = $SubViewport/Node3D/low_poly_prot
+@onready var player_model: Node3D = $SubViewport/Sophia_Model
+@onready var anim_player: AnimationPlayer = $SubViewport/Sophia_Model.get_node("AnimationPlayer")
 @onready var camera_2d: Camera2D = $Camera2D
 
+
+
 #State Machine
-@onready var state_machine: Node = $StateMachine
+@export var state_machine: Node
+
 
 
 func _ready():
