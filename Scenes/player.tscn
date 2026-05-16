@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://cv760emty7krm"]
 
-[ext_resource type="Script" uid="uid://b18fomgic1ap" path="res://Scripts/Player/Player.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://mo8uf06rwa0a" path="res://Scripts/Player/player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://bavq107j1ul6x" path="res://Model/Protagonist/low_poly_prot.glb" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://cdfrpqlgutfx5" path="res://Scripts/Player/StateMachine.gd" id="3_x3wgy"]
-[ext_resource type="Script" uid="uid://ddl4574sppf3j" path="res://Scripts/Player/States/MoveRunState.gd" id="4_3smsa"]
-[ext_resource type="Script" uid="uid://bj0nwsavnov82" path="res://Scripts/Player/States/JumpState.gd" id="5_8erm5"]
-[ext_resource type="Script" uid="uid://di7dlawidbsq8" path="res://Scripts/Player/States/IdleState.gd" id="6_f1ek2"]
-[ext_resource type="Script" uid="uid://cq223lv76b23c" path="res://Scripts/Player/States/FastFallState.gd" id="7_f1ek2"]
-[ext_resource type="Script" uid="uid://bahpvd6g0jbim" path="res://Scripts/Player/States/AirState.gd" id="8_f1ek2"]
-[ext_resource type="Script" uid="uid://2kplfh3hwnj8" path="res://Scripts/Player/States/AttackState.gd" id="9_f1ek2"]
+[ext_resource type="Script" uid="uid://dovkb3tws6gc8" path="res://Scripts/Player/States/idle_state.gd" id="4_x3wgy"]
+[ext_resource type="Script" uid="uid://b2noph5jd5cu2" path="res://Scripts/Player/States/jump_state.gd" id="5_3smsa"]
+[ext_resource type="Script" uid="uid://upottu7w33vf" path="res://Scripts/Player/States/walk_state.gd" id="6_8erm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx1dd"]
 size = Vector2(290, 908)
@@ -29,25 +26,8 @@ script = ExtResource("1_cvnsp")
 [node name="HitBox" type="Area2D" parent="." unique_id=599792304 groups=["player_attack"]]
 light_mask = 4
 
-[node name="HitboxCollisionRight" type="CollisionShape2D" parent="HitBox" unique_id=1995420860]
+[node name="HitboxCollision" type="CollisionShape2D" parent="HitBox" unique_id=1995420860]
 position = Vector2(352, -456)
-shape = SubResource("RectangleShape2D_tx1dd")
-disabled = true
-
-[node name="HitboxCollisionLeft" type="CollisionShape2D" parent="HitBox" unique_id=1076469554]
-position = Vector2(-376, -453)
-shape = SubResource("RectangleShape2D_tx1dd")
-disabled = true
-
-[node name="HitboxCollisionUp" type="CollisionShape2D" parent="HitBox" unique_id=1246694079]
-position = Vector2(4, -1056)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_tx1dd")
-disabled = true
-
-[node name="HitboxCollisionDown" type="CollisionShape2D" parent="HitBox" unique_id=815340975]
-position = Vector2(32, -88)
-rotation = 1.5707964
 shape = SubResource("RectangleShape2D_tx1dd")
 disabled = true
 
@@ -86,26 +66,20 @@ label_settings = SubResource("LabelSettings_8erm5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StateMachine" type="Node" parent="." unique_id=2060354217]
+[node name="StateMachine" type="Node" parent="." unique_id=1045712615]
 script = ExtResource("3_x3wgy")
+metadata/_custom_type_script = "uid://cdfrpqlgutfx5"
 
-[node name="MoveRunState" type="Node" parent="StateMachine" unique_id=575027198]
-script = ExtResource("4_3smsa")
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1328187490]
+script = ExtResource("4_x3wgy")
+metadata/_custom_type_script = "uid://dovkb3tws6gc8"
 
-[node name="JumpState" type="Node" parent="StateMachine" unique_id=928040175]
-script = ExtResource("5_8erm5")
+[node name="JumpState" type="Node" parent="StateMachine" unique_id=638781510]
+script = ExtResource("5_3smsa")
+metadata/_custom_type_script = "uid://b2noph5jd5cu2"
 
-[node name="IdleState" type="Node" parent="StateMachine" unique_id=906021483]
-script = ExtResource("6_f1ek2")
-
-[node name="FastFallState" type="Node" parent="StateMachine" unique_id=712080591]
-script = ExtResource("7_f1ek2")
-
-[node name="AirState" type="Node" parent="StateMachine" unique_id=1333661431]
-script = ExtResource("8_f1ek2")
-
-[node name="AttackState" type="Node" parent="StateMachine" unique_id=1151571400]
-script = ExtResource("9_f1ek2")
-metadata/_custom_type_script = "uid://cecno1esqtfko"
+[node name="WalkState" type="Node" parent="StateMachine" unique_id=1127746799]
+script = ExtResource("6_8erm5")
+metadata/_custom_type_script = "uid://upottu7w33vf"
 
 [connection signal="body_entered" from="HitBox" to="HitBox" method="_on_body_entered"]
