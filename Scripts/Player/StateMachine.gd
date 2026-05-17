@@ -1,41 +1,39 @@
 extends Node
 
-class_name StateMachine
+var current_state
+var player
 
-@export var initial_state: State
-var current_state: State
-var states: Dictionary = {}
-
-
-func _ready() -> void:
-	# registrar todos los child states
+func init(p):
+	player = p
+	
 	for child in get_children():
 		if child is State:
-			states[child.name.to_lower()] = child
-			child.state_machine
-	# empieza con el initial state
-	if initial_state:
-		change_state(initial_state.name.to_lower())
+			child.player = player
+			child.state_machine = self
+	
+	change_state($IdleState)
 
+func change_state(new_state):
+	if new_state == null:
+		push_error("nope eso no es un estado")
+		return
 
-func _process(delta: float) -> void:
-	if current_state:
-		current_state.update(delta)
+	if current_state == new_state:
+		return
 
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.physics_update(delta)
-
-func _input(event: InputEvent) -> void:
-	if current_state:
-		current_state.handle_input(event)
-
-func change_state(new_state_name: String) -> void:
 	if current_state:
 		current_state.exit()
+
+	current_state = new_state
+	current_state.player = player
 	
-	current_state = states.get(new_state_name.to_lower())
-	
+	current_state.state_machine = self
+
+	if player.state_label:
+		player.state_label.text = "State: " + current_state.name
+
+	current_state.enter()
+
+func physics_update(delta):
 	if current_state:
-		current_state.enter()
-	
+		current_state.physics_update(delta)

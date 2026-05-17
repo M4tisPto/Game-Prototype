@@ -33,35 +33,14 @@ script = ExtResource("1_v158k")
 [node name="Player" parent="." unique_id=2057628453 instance=ExtResource("1_qxrlw")]
 position = Vector2(-2120, -464)
 scale = Vector2(0.45565394, 0.45565394)
-walk_speed = 650.05
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1012375917]
 position = Vector2(2.194648, -603.5282)
 zoom = Vector2(0.53, 0.53)
 script = ExtResource("3_wrm1d")
 
-[node name="Enemy" parent="." unique_id=1872012621 instance=ExtResource("4_3dryh")]
-position = Vector2(-720, -448)
-scale = Vector2(0.22251941, 0.22251941)
-
-[node name="Enemy2" parent="." unique_id=820284592 instance=ExtResource("4_3dryh")]
-position = Vector2(-720, -448)
-scale = Vector2(0.22251941, 0.22251941)
-
-[node name="Enemy3" parent="." unique_id=1161119556 instance=ExtResource("4_3dryh")]
-position = Vector2(1622, -540)
-scale = Vector2(0.22251941, 0.22251941)
-
 [node name="Enemy4" parent="." unique_id=2009944293 instance=ExtResource("4_3dryh")]
-position = Vector2(-1433, -473)
-scale = Vector2(0.22251941, 0.22251941)
-
-[node name="Enemy5" parent="." unique_id=691308189 instance=ExtResource("4_3dryh")]
-position = Vector2(750, -448)
-scale = Vector2(0.22251941, 0.22251941)
-
-[node name="Enemy6" parent="." unique_id=80508598 instance=ExtResource("4_3dryh")]
-position = Vector2(-53, -434)
+position = Vector2(1200, -464)
 scale = Vector2(0.22251941, 0.22251941)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=668882941]
