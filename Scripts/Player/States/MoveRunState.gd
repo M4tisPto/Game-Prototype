@@ -20,7 +20,6 @@ func physics_update(delta):
 			player.rotation_speed * delta
 		)
 		player.facing_direction = sign(direction)
-		player.anim_player.play("Anim/Run")
 
 
 	if Input.is_action_just_pressed("attack_button"):

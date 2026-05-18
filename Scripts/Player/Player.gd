@@ -8,7 +8,8 @@ extends CharacterBody2D
 @export var rotation_speed = 10.0
 @onready var state_label: Label = $StateDebugLabel
 @export var jump_force = -600.0
-@onready var hitbox: Area2D = $HitBox
+@onready var hitbox: Area2D = $Hitbox
+
 @onready var healthBar: TextureProgressBar = $"../CanvasLayer/healthBar"
 @onready var animacion_ataque: AnimationPlayer = $Animacion_d_ataque
 @onready var iframe_timer: Timer = $Iframe_timer

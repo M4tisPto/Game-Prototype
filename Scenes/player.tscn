@@ -8,6 +8,10 @@
 [ext_resource type="Script" uid="uid://di7dlawidbsq8" path="res://Scripts/Player/States/IdleState.gd" id="6_f1ek2"]
 [ext_resource type="Script" uid="uid://bahpvd6g0jbim" path="res://Scripts/Player/States/AirState.gd" id="8_f1ek2"]
 [ext_resource type="Script" uid="uid://2kplfh3hwnj8" path="res://Scripts/Player/States/AttackState.gd" id="9_f1ek2"]
+[ext_resource type="Script" uid="uid://dq6gj4s4g20t1" path="res://Scripts/Player/hit_box.gd" id="9_tx1dd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gymyn"]
+size = Vector2(320, 1019)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gymyn"]
 radius = 119.0
@@ -22,6 +26,14 @@ font_size = 150
 [node name="Player" type="CharacterBody2D" unique_id=2057628453 node_paths=PackedStringArray("state_machine")]
 script = ExtResource("1_cvnsp")
 state_machine = NodePath("StateMachine")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=176337858]
+script = ExtResource("9_tx1dd")
+
+[node name="HitboxCollisionRight" type="CollisionShape2D" parent="Hitbox" unique_id=1700131786]
+position = Vector2(433, -519.5)
+shape = SubResource("RectangleShape2D_gymyn")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51482863]
 position = Vector2(0, -467)

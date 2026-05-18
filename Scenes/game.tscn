@@ -32,7 +32,7 @@ zoom = Vector2(0.53, 0.53)
 script = ExtResource("3_wrm1d")
 
 [node name="Enemy" parent="." unique_id=1872012621 instance=ExtResource("4_3dryh")]
-position = Vector2(2617, -556)
+position = Vector2(2232, -446)
 scale = Vector2(0.22251941, 0.22251941)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=668882941]
