@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://cjvq5uhk1pqbb"]
 
-[ext_resource type="PackedScene" uid="uid://cv760emty7krm" path="res://Scenes/player.tscn" id="1_qxrlw"]
-[ext_resource type="Script" uid="uid://dra3xr7uoh8fs" path="res://Scripts/game.gd" id="1_v158k"]
-[ext_resource type="Script" uid="uid://dk5mg8qwedv4k" path="res://Scripts/camera_2d.gd" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://bc6rvnq6v51er" path="res://Scenes/enemy.tscn" id="4_3dryh"]
-[ext_resource type="Texture2D" uid="uid://y26ft1pox4ov" path="res://Model/health_bar/Health_bar_empty.png" id="4_i6g32"]
-[ext_resource type="Texture2D" uid="uid://dvrfjode64sum" path="res://Model/health_bar/health_bar_template.png" id="5_1l0tm"]
-[ext_resource type="Texture2D" uid="uid://d1jmobosr4qd8" path="res://Model/health_bar/health_bar_full.png" id="6_v158k"]
-[ext_resource type="AudioStream" uid="uid://b61r5w6ulxkor" path="res://Music/Level_x_Maids_Kobayashi2.mp3" id="8_h4fw4"]
+[ext_resource type="Script" uid="uid://dra3xr7uoh8fs" path="res://Scripts/game.gd" id="1_8h618"]
+[ext_resource type="PackedScene" uid="uid://cv760emty7krm" path="res://Scenes/player.tscn" id="2_f2n0o"]
+[ext_resource type="Script" uid="uid://dk5mg8qwedv4k" path="res://Scripts/camera_2d.gd" id="3_3rmdf"]
+[ext_resource type="PackedScene" uid="uid://bc6rvnq6v51er" path="res://Scenes/enemy.tscn" id="4_wv2xt"]
+[ext_resource type="Texture2D" uid="uid://y26ft1pox4ov" path="res://Model/health_bar/Health_bar_empty.png" id="5_ei72r"]
+[ext_resource type="Texture2D" uid="uid://dvrfjode64sum" path="res://Model/health_bar/health_bar_template.png" id="6_q5jsk"]
+[ext_resource type="Texture2D" uid="uid://d1jmobosr4qd8" path="res://Model/health_bar/health_bar_full.png" id="7_fgfdw"]
+[ext_resource type="AudioStream" uid="uid://b61r5w6ulxkor" path="res://Music/Level_x_Maids_Kobayashi2.mp3" id="8_8fp34"]
+[ext_resource type="PackedScene" uid="uid://cmesnprumewqg" path="res://Scenes/door.tscn" id="9_f2n0o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
 size = Vector2(6735, 393)
@@ -18,10 +19,13 @@ size = Vector2(6016, 200)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v158k"]
 size = Vector2(384, 1019.5)
 
-[node name="Game" type="Node2D" unique_id=1288219478]
-script = ExtResource("1_v158k")
+[sub_resource type="LabelSettings" id="LabelSettings_275od"]
+font_size = 41
 
-[node name="Player" parent="." unique_id=2057628453 instance=ExtResource("1_qxrlw")]
+[node name="Game" type="Node2D" unique_id=1288219478]
+script = ExtResource("1_8h618")
+
+[node name="Player" parent="." unique_id=2057628453 instance=ExtResource("2_f2n0o")]
 position = Vector2(-2120, -464)
 scale = Vector2(0.45565394, 0.45565394)
 walk_speed = 650.05
@@ -29,9 +33,9 @@ walk_speed = 650.05
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1012375917]
 position = Vector2(2.194648, -603.5282)
 zoom = Vector2(0.53, 0.53)
-script = ExtResource("3_wrm1d")
+script = ExtResource("3_3rmdf")
 
-[node name="Enemy" parent="." unique_id=1872012621 instance=ExtResource("4_3dryh")]
+[node name="Enemy" parent="." unique_id=1872012621 instance=ExtResource("4_wv2xt")]
 position = Vector2(2232, -446)
 scale = Vector2(0.22251941, 0.22251941)
 
@@ -62,10 +66,23 @@ offset_top = -15.0
 offset_right = 295.0
 offset_bottom = 235.0
 scale = Vector2(8, 8)
-texture_under = ExtResource("4_i6g32")
-texture_over = ExtResource("5_1l0tm")
-texture_progress = ExtResource("6_v158k")
+texture_under = ExtResource("5_ei72r")
+texture_over = ExtResource("6_q5jsk")
+texture_progress = ExtResource("7_fgfdw")
 metadata/_edit_use_anchors_ = true
 
 [node name="musica" type="AudioStreamPlayer2D" parent="." unique_id=912836485]
-stream = ExtResource("8_h4fw4")
+stream = ExtResource("8_8fp34")
+
+[node name="Label" type="Label" parent="." unique_id=1540839816]
+offset_left = 97.0
+offset_top = -1200.0
+offset_right = 250.0
+offset_bottom = -1143.0
+scale = Vector2(2.7674282, 2.7674282)
+text = "da door"
+label_settings = SubResource("LabelSettings_275od")
+horizontal_alignment = 1
+
+[node name="Door" parent="." unique_id=608057078 instance=ExtResource("9_f2n0o")]
+position = Vector2(-527, -764)

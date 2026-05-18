@@ -41,15 +41,7 @@ func exit():
 
 func activate_hitbox():
 	player.hitbox.scale = Vector2(1.2, 1.2)
-	match attack_dir:
-		"right":
-			player.hitbox.get_node("HitboxCollisionRight").disabled = false
-		"left":
-			player.hitbox.get_node("HitboxCollisionLeft").disabled = false
-		"up":
-			player.hitbox.get_node("HitboxCollisionUp").disabled = false
-		"down":
-			player.hitbox.get_node("HitboxCollisionDown").disabled = false
+	player.hitbox.get_node("AttackCollision").disabled = false
 
 func deactivate_hitbox():
 	for child in player.hitbox.get_children():

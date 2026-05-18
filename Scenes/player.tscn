@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cv760emty7krm"]
 
-[ext_resource type="Script" uid="uid://b18fomgic1ap" path="res://Scripts/Player/Player.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://c8o66qroo42ii" path="res://Scripts/Player/Player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://d08pkl5hy36f" path="res://Model/Protagonist/Sophia_Model.fbx" id="2_f1ek2"]
 [ext_resource type="Script" uid="uid://cdfrpqlgutfx5" path="res://Scripts/Player/StateMachine.gd" id="3_x3wgy"]
-[ext_resource type="Script" uid="uid://ddl4574sppf3j" path="res://Scripts/Player/States/MoveRunState.gd" id="4_3smsa"]
+[ext_resource type="Script" uid="uid://dxka2l0ndxu1s" path="res://Scripts/Player/States/MoveRunState.gd" id="4_3smsa"]
 [ext_resource type="Script" uid="uid://bj0nwsavnov82" path="res://Scripts/Player/States/JumpState.gd" id="5_8erm5"]
 [ext_resource type="Script" uid="uid://di7dlawidbsq8" path="res://Scripts/Player/States/IdleState.gd" id="6_f1ek2"]
 [ext_resource type="Script" uid="uid://bahpvd6g0jbim" path="res://Scripts/Player/States/AirState.gd" id="8_f1ek2"]
-[ext_resource type="Script" uid="uid://2kplfh3hwnj8" path="res://Scripts/Player/States/AttackState.gd" id="9_f1ek2"]
+[ext_resource type="Script" uid="uid://cridk61kmr2pw" path="res://Scripts/Player/States/AttackState.gd" id="9_f1ek2"]
 [ext_resource type="Script" uid="uid://dq6gj4s4g20t1" path="res://Scripts/Player/hit_box.gd" id="9_tx1dd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gymyn"]
@@ -24,13 +24,14 @@ viewport_path = NodePath("SubViewport")
 font_size = 150
 
 [node name="Player" type="CharacterBody2D" unique_id=2057628453 node_paths=PackedStringArray("state_machine")]
+collision_mask = 2
 script = ExtResource("1_cvnsp")
 state_machine = NodePath("StateMachine")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=176337858]
 script = ExtResource("9_tx1dd")
 
-[node name="HitboxCollisionRight" type="CollisionShape2D" parent="Hitbox" unique_id=1700131786]
+[node name="AttackCollision" type="CollisionShape2D" parent="Hitbox" unique_id=1700131786]
 position = Vector2(433, -519.5)
 shape = SubResource("RectangleShape2D_gymyn")
 disabled = true

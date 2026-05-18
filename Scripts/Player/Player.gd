@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+
+
+
 # Velocidades
 @export var walk_speed = 650.0
 @export var run_speed = 1000.0
@@ -9,10 +12,7 @@ extends CharacterBody2D
 @onready var state_label: Label = $StateDebugLabel
 @export var jump_force = -600.0
 @onready var hitbox: Area2D = $Hitbox
-
 @onready var healthBar: TextureProgressBar = $"../CanvasLayer/healthBar"
-@onready var animacion_ataque: AnimationPlayer = $Animacion_d_ataque
-@onready var iframe_timer: Timer = $Iframe_timer
 var facing_direction := 1
 
 var health: int

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dvp0op2s4vs2n"]
+
+[ext_resource type="PackedScene" uid="uid://cmesnprumewqg" path="res://Scenes/door.tscn" id="1_feyax"]
+[ext_resource type="PackedScene" uid="uid://cv760emty7krm" path="res://Scenes/player.tscn" id="2_omtrn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_feyax"]
+size = Vector2(10030, 793)
+
+[node name="tutorial" type="Node2D" unique_id=34943850]
+
+[node name="Player" parent="." unique_id=2057628453 instance=ExtResource("2_omtrn")]
+position = Vector2(-1853, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1860966890]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=185904600]
+position = Vector2(0, 386.5)
+shape = SubResource("RectangleShape2D_feyax")
+debug_color = Color(0.72618186, 0.24184838, 0.99999994, 0.41960785)
+
+[node name="Doors" type="Node" parent="." unique_id=488276411]
+
+[node name="Door_O" parent="Doors" unique_id=608057078 instance=ExtResource("1_feyax")]
+position = Vector2(-337, -303)
+destination_level_tag = "test_room"
+destination_door_tag = "E"
+
+[node name="CollisionShape2D" parent="Doors/Door_O" index="1" unique_id=1932853232]
+position = Vector2(337.00003, -274)
+scale = Vector2(-1.8902826, 1.895796)
+
+[editable path="Doors/Door_O"]
