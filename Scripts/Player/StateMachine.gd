@@ -25,6 +25,9 @@ func change_state(new_state):
 		current_state.exit()
 
 	current_state = new_state
+	current_state.player = player
+	
+	current_state.state_machine = self
 
 	if player.state_label:
 		player.state_label.text = "State: " + current_state.name

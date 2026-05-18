@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://cv760emty7krm"]
+
+[ext_resource type="Script" uid="uid://c8o66qroo42ii" path="res://Scenes/Player.gd" id="1_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://bavq107j1ul6x" path="res://Model/Protagonist/low_poly_prot.glb" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://cdfrpqlgutfx5" path="res://Scripts/Player/StateMachine.gd" id="3_x3wgy"]
+
+[sub_resource type="GDScript" id="GDScript_cvnsp"]
+script/source = "extends State
+class_name IdleState
+
+func physics_update(delta):
+
+	character.velocity.y += 900 * delta
+
+	character.velocity.x = 0
+
+	character.move_and_slide()
+
+	var direction = Input.get_axis(\"move_left\", \"move_right\")
+
+	if direction != 0:
+		state_machine.change_state(\"walkstate\")
+
+	if Input.is_action_just_pressed(\"jump\"):
+		state_machine.change_state(\"jumpstate\")
+"
+
+[sub_resource type="GDScript" id="GDScript_6t5aa"]
+script/source = "extends State
+class_name JumpState
+
+var JUMP_SPEED = -400
+
+func enter():
+
+	character.velocity.y = JUMP_SPEED
+
+func physics_update(delta):
+
+	character.velocity.y += 900 * delta
+
+	var direction = Input.get_axis(\"move_left\", \"move_right\")
+
+	character.velocity.x = direction * 200
+
+	character.move_and_slide()
+
+	if character.is_on_floor():
+
+		if direction != 0:
+			state_machine.change_state(\"walkstate\")
+		else:
+			state_machine.change_state(\"idlestate\")
+"
+
+[sub_resource type="GDScript" id="GDScript_vgqql"]
+script/source = "extends State
+class_name WalkState
+
+func physics_update(delta):
+
+	character.velocity.y += 900 * delta
+
+	var direction = Input.get_axis(\"move_left\", \"move_right\")
+
+	if direction == 0:
+		state_machine.change_state(\"idlestate\")
+		return
+
+	if Input.is_action_just_pressed(\"jump\"):
+		state_machine.change_state(\"jumpstate\")
+		return
+
+	character.velocity.x = direction * 200
+
+	character.move_and_slide()
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gymyn"]
+radius = 119.0
+height = 960.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_v0iea"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8erm5"]
+font_size = 150
+
+[node name="Player" type="CharacterBody2D" unique_id=2057628453]
+script = ExtResource("1_6t5aa")
+
+[node name="StateMachine" type="Node" parent="." unique_id=2074553251]
+script = ExtResource("3_x3wgy")
+metadata/_custom_type_script = "uid://cdfrpqlgutfx5"
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=141675826]
+script = SubResource("GDScript_cvnsp")
+metadata/_custom_type_script = "uid://dovkb3tws6gc8"
+
+[node name="JumpState" type="Node" parent="StateMachine" unique_id=1175984356]
+script = SubResource("GDScript_6t5aa")
+metadata/_custom_type_script = "uid://b2noph5jd5cu2"
+
+[node name="WalkState" type="Node" parent="StateMachine" unique_id=1037489094]
+script = SubResource("GDScript_vgqql")
+metadata/_custom_type_script = "uid://upottu7w33vf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51482863]
+position = Vector2(0, -467)
+shape = SubResource("CapsuleShape2D_gymyn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1533620887]
+position = Vector2(0, -464)
+texture = SubResource("ViewportTexture_v0iea")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=807165771]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1171319549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9560447, 1.4021001)
+projection = 1
+current = true
+size = 2.1061244
+
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=475907935]
+
+[node name="low_poly_prot" parent="SubViewport/Node3D" unique_id=1933262374 instance=ExtResource("1_v0iea")]
+transform = Transform3D(0.7782431, 0, 0.62796307, 0, 1, 0, -0.62796307, 0, 0.7782431, 0, 0, 0)
+
+[node name="StateDebugLabel" type="Label" parent="." unique_id=106465608]
+offset_left = -560.0
+offset_top = -1128.0
+offset_right = -520.0
+offset_bottom = -1105.0
+label_settings = SubResource("LabelSettings_8erm5")
+horizontal_alignment = 1
+vertical_alignment = 1
